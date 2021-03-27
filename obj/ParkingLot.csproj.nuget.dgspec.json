@@ -14,7 +14,7 @@
         "outputPath": "/Users/srisaiachyutha/Projects/ParkingLot/ParkingLot/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/srisaiachyutha/.config/NuGet/NuGet.Config"
+          "/Users/srisaiachyutha/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

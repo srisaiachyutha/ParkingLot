@@ -63,9 +63,9 @@ namespace ParkingLot.Models
         public void ShowDetails()
         {
             Console.WriteLine("there are " + this._twoWheelers.ToString() +
-            "two wheeler empty slots" + this._fourWheelers.ToString() +
-            "Four wheeler empty slots" + this._heavyVehicles.ToString() +
-            "heavy vehicles"
+            " two wheeler empty slots " + this._fourWheelers.ToString() +
+            " Four wheeler empty slots " + this._heavyVehicles.ToString() +
+            " heavy vehicles"
             );
             foreach (KeyValuePair<string, Ticket> item in this._dict)
             {

@@ -33,14 +33,15 @@ namespace ParkingLot
                         Console.WriteLine("choose the options below");
                         Console.WriteLine("1. two Wheeler\n2. four wheeler \n3. heavy vehicles");
                         int parkChoice = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("enter the vehicle number");
-                        int vehicle = Convert.ToInt32(Console.ReadLine());
+
 
                         switch (parkChoice)
                         {
                             case 1:
                                 if (p.TwoWheelers > 0)
                                 {
+                                    Console.WriteLine("enter the vehicle number");
+                                    int vehicle = Convert.ToInt32(Console.ReadLine());
                                     p.TwoWheelers -= 1;
                                     p.AddVehicleNumber(vehicle, VehicleType.TWO);
                                     Console.WriteLine("the vehicle has parked successfully");
@@ -53,6 +54,8 @@ namespace ParkingLot
                             case 2:
                                 if (p.FourWheelers > 0)
                                 {
+                                    Console.WriteLine("enter the vehicle number");
+                                    int vehicle = Convert.ToInt32(Console.ReadLine());
                                     p.FourWheelers -= 1;
                                     p.AddVehicleNumber(vehicle, VehicleType.FOUR);
                                     Console.WriteLine("the vehicle has parked successfully");
@@ -66,6 +69,8 @@ namespace ParkingLot
                             case 3:
                                 if (p.HeavyVehicles > 0)
                                 {
+                                    Console.WriteLine("enter the vehicle number");
+                                    int vehicle = Convert.ToInt32(Console.ReadLine());
                                     p.HeavyVehicles -= 1;
                                     p.AddVehicleNumber(vehicle, VehicleType.HEAVY);
                                     Console.WriteLine("the vehicle has parked successfully");
@@ -75,6 +80,9 @@ namespace ParkingLot
                                 {
                                     Console.WriteLine(" the slots are not empty ");
                                 }
+                                break;
+                            default:
+                                Console.WriteLine("you have choosen wrong vehicle type");
                                 break;
                         }
                         break;
@@ -94,7 +102,7 @@ namespace ParkingLot
                         break;
                     default:
                         // choose a good number
-                        Console.WriteLine("please choose the number from menu");
+                        Console.WriteLine("you have choosen wrong number from menu");
                         break;
                 }
 
@@ -105,6 +113,6 @@ namespace ParkingLot
                 }
             }
         }
-    
+
     }
 }
