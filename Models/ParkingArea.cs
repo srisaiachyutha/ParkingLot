@@ -25,16 +25,31 @@ namespace ParkingLot.Models
             set { this._heavyVehicles = value; }
         }
 
+        public int CostForLessThanOneHour { get; set; } = 5; // default 5 rupees
+        public int CostForEachHour { get; set; } = 10;
         public void AddVehicleNumber(int vehicleNumber, VehicleType v)
         {
             Random r = new Random();
             int n;
             do
-            {
+            {   // for generating random slot number
                 n = r.Next(1, 1000);
             } while (this._dict.ContainsKey(n.ToString()));
 
             this._dict.Add(vehicleNumber.ToString(), new Ticket(vehicleNumber, n, v, DateTime.Now));
+            Console.WriteLine("the slot number for parking your car is " + n.ToString());
+            switch (v)
+            {
+                case VehicleType.FOUR:
+                    this._fourWheelers -= 1;
+                    break;
+                case VehicleType.HEAVY:
+                    this._heavyVehicles -= 1;
+                    break;
+                case VehicleType.TWO:
+                    this._twoWheelers -= 1;
+                    break;
+            }
         }
 
         public bool RemoveVehicle(int vehicle)
@@ -54,7 +69,21 @@ namespace ParkingLot.Models
                         this._heavyVehicles += 1;
                         break;
                 }
+
                 this._dict.Remove(vehicle.ToString());
+                // for calculating the time difference and calculating the cost
+                // for parking 
+                DateTime endTime = DateTime.Now;
+                TimeSpan span = endTime.Subtract(t.GiveInTime());
+                decimal cost = CostForLessThanOneHour; // default cost for parking
+                if (span.Hours > 1)
+                {
+                    // if parking time exceeds more than one hour at that time the cost for 
+                    // parking
+                    cost += (Math.Ceiling((decimal)span.Hours) - 1) * CostForEachHour;
+                }
+                Console.WriteLine("the cost for parking your vehicle is " +
+                    cost.ToString());
                 return true;
             }
             return false;
@@ -62,10 +91,10 @@ namespace ParkingLot.Models
 
         public void ShowDetails()
         {
-            Console.WriteLine("there are " + this._twoWheelers.ToString() +
-            " two wheeler empty slots " + this._fourWheelers.ToString() +
-            " Four wheeler empty slots " + this._heavyVehicles.ToString() +
-            " heavy vehicles"
+            Console.WriteLine("there are \n" + this._twoWheelers.ToString() +
+            " two wheeler empty slots \n" + this._fourWheelers.ToString() +
+            " Four wheeler empty slots \n" + this._heavyVehicles.ToString() +
+            " heavy vehicles empty slots\n"
             );
             foreach (KeyValuePair<string, Ticket> item in this._dict)
             {

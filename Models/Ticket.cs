@@ -13,7 +13,7 @@ namespace ParkingLot.Models
                       int slotNumber,
                       VehicleType v,
                       DateTime inTime
-                      
+
                       )
         {
             this._inTime = inTime;
@@ -34,6 +34,10 @@ namespace ParkingLot.Models
         public int NumberPlate()
         {
             return this._vehicleNumber;
+        }
+        public DateTime GiveInTime()
+        {
+            return this._inTime;
         }
     }
 }

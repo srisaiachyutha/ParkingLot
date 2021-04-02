@@ -16,10 +16,14 @@ namespace ParkingLot
             p.FourWheelers = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the heavy vehicles parking count");
             p.HeavyVehicles = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter cost for vehicles parking less than 1 hour");
+            p.CostForLessThanOneHour = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter cost for vehicles parking more than 1 hour");
+            p.CostForEachHour = Convert.ToInt32(Console.ReadLine());
 
             while (true)
             {
-                Console.WriteLine("1. See parking details\n2.Park Vehicle\n3.Unpark Vehicle\nEnter the choice\n");
+                Console.WriteLine("\n1. See parking details\n2. Park Vehicle\n3. Unpark Vehicle\nEnter the choice\n");
 
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -42,13 +46,13 @@ namespace ParkingLot
                                 {
                                     Console.WriteLine("enter the vehicle number");
                                     int vehicle = Convert.ToInt32(Console.ReadLine());
-                                    p.TwoWheelers -= 1;
+                                    //p.TwoWheelers -= 1;
                                     p.AddVehicleNumber(vehicle, VehicleType.TWO);
                                     Console.WriteLine("the vehicle has parked successfully");
                                 }
                                 else
                                 {
-                                    Console.WriteLine(" the slots are not empty ");
+                                    Console.WriteLine(" the slots are not empty for two wheelers ");
                                 }
                                 break;
                             case 2:
@@ -56,14 +60,14 @@ namespace ParkingLot
                                 {
                                     Console.WriteLine("enter the vehicle number");
                                     int vehicle = Convert.ToInt32(Console.ReadLine());
-                                    p.FourWheelers -= 1;
+                                    //p.FourWheelers -= 1;
                                     p.AddVehicleNumber(vehicle, VehicleType.FOUR);
                                     Console.WriteLine("the vehicle has parked successfully");
 
                                 }
                                 else
                                 {
-                                    Console.WriteLine(" the slots are not empty ");
+                                    Console.WriteLine(" the slots are not empty for four wheelers");
                                 }
                                 break;
                             case 3:
@@ -71,14 +75,14 @@ namespace ParkingLot
                                 {
                                     Console.WriteLine("enter the vehicle number");
                                     int vehicle = Convert.ToInt32(Console.ReadLine());
-                                    p.HeavyVehicles -= 1;
+                                    //p.HeavyVehicles -= 1;
                                     p.AddVehicleNumber(vehicle, VehicleType.HEAVY);
                                     Console.WriteLine("the vehicle has parked successfully");
 
                                 }
                                 else
                                 {
-                                    Console.WriteLine(" the slots are not empty ");
+                                    Console.WriteLine(" the slots are not empty for heavy vehicles ");
                                 }
                                 break;
                             default:
